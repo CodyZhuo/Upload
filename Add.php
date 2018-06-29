@@ -22,7 +22,7 @@ foreach ($_FILES['image']['name'] as $key => $value) {
 echo '<script language="javascript">
 alert("OK");
 var url = document.referrer;
-window.open(url);
+window.location.href=url;
 
 
 </script> ';
