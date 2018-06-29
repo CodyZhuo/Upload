@@ -15,18 +15,15 @@ $url2 = explode("=",$url);
 $conn = pg_connect("host=localhost port=5432 dbname=Sanhuanpao user=postgres password=lily520");
 $result= pg_query ($conn,"SELECT picture  FROM plants WHERE name_id = '$url2[1]'");
 $arr = pg_fetch_all($result);
-// $arrStr = json_encode($arr[0]['picture']);//已经是字符串,因为如果直接把字符串分开的话，会连 picture:这类的都得到
-// $arr2 = explode(",",$arrStr);//提取各个地址
-
-var_dump($arr);
+$arr2 = explode(",",$arr[0]['picture']);//提取各个地址
 foreach ($picture as $key => $value) {
-$Rarr = $arr[0]['picture'][$value];
-// var_dump($Rarr);
-// echo $Rarr;
-
-
-
-// pg_query($conn,"UPDATE plants SET picture = replace(picture,'$Rarr','');");
-
+$Rarr = $arr2[$value];
+pg_query($conn,"UPDATE plants SET picture = replace(picture,'$Rarr,','');");
+unlink($Rarr);
 }
+echo '<script language="javascript">
+alert("OK");
+var url = document.referrer;
+window.location.href=url;
+</script> ';
 }

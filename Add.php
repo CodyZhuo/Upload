@@ -14,7 +14,7 @@ foreach ($_FILES['image']['name'] as $key => $value) {
     $LN =   $LastName[1];
     $filename = date("YmdHis").rand(0,999).'.'.$LN;
     move_uploaded_file($_FILES["image"]["tmp_name"][$key],'image/'.$filename);
-    pg_query($conn,"UPDATE plants SET picture = concat(picture,'$filename,') WHERE name_id = '$url2[1]'");
+    pg_query($conn,"UPDATE plants SET picture = concat(picture,'image/$filename,') WHERE name_id = '$url2[1]'");
   }
 }
 
@@ -23,6 +23,4 @@ echo '<script language="javascript">
 alert("OK");
 var url = document.referrer;
 window.location.href=url;
-
-
 </script> ';
