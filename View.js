@@ -17,15 +17,11 @@ $.ajax({
         else{
           var FM=document.getElementById("FM");
           var C1=document.createElement("img");
-          var C2=document.createElement("input");
           C1.src = value;
           C1.style.height = '170px';
           C1.style.width = '170px';
-          C2.type = 'checkbox';
-          C2.name = 'delete[]';
-          C2.value =  index;
+          C1.style.margin = '20px';
           FM.appendChild(C1);
-          FM.appendChild(C2);
         }
       });
     }
