@@ -22,6 +22,7 @@ $.ajax({
           C1.style.width = '170px';
           C1.style.margin = '20px';
           FM.appendChild(C1);
+
         }
       });
     }
